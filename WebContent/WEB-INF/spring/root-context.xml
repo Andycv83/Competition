@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <context:annotation-config />
+
+ <context:component-scan  basepackage="com.softserve.edu.dao” />
+ <context:component-scan basepackage="com.softserve.edu.service“ />
+
+ <import resource="data.xml" />
+   
+ <import resource="security.xml" />
+
+</beans>

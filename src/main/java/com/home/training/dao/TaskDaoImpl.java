@@ -1,49 +1,59 @@
 package main.java.com.home.training.dao;
 
-import java.util.Set;
+import java.util.List;
+
 import main.java.com.home.training.entity.Competition;
 import main.java.com.home.training.entity.Task;
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public class TaskDaoImpl implements TaskDAO {
- //   @Autowired
+	@Autowired
     private SessionFactory sessionFactory;
     
 	public void addTask(Task task) {
-		sessionFactory.getCurrentSession().save(task);
-		
+		sessionFactory.getCurrentSession().save(task);		
 	}
 
+	@Override
 	public void updateTask(Task task) {
-		// TODO Auto-generated method stub
+		  sessionFactory.getCurrentSession();
+		  Task t = (Task)sessionFactory.getCurrentSession().load(Task.class, task.getId());
+		  t.setId(task.getId());
+		  t.setDescription(task.getDescription());
+		  t.setCompetitionId(task.getCompetitionId());	
+		  t.setLevel(task.getLevel());
+		  sessionFactory.getCurrentSession().save(t);
+		 }
 		
-	}
 
 	public void deleteTask(Integer id) {
-		// TODO Auto-generated method stub
-		
+		Task task = (Task) sessionFactory.getCurrentSession().load(Task.class, id);
+        if (null != task) {sessionFactory.getCurrentSession().delete(task);        
+        }
 	}
 
-	public Set<Task> getAllTask(int CompetitionId) {
+	public List<Task> getAllTask(int CompetitionId) {
 		return sessionFactory.getCurrentSession().createQuery("from Task").list();
 	}
 
 	public Task getTaskById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Task task = (Task) sessionFactory.getCurrentSession().load(Task.class, id);	   
+		  return task;
 	}
 
 	public void addCompetition(Competition competition) {
-		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(competition);	
 		
 	}
 
-	public Set<Competition> getAllCompetition() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Competition> getAllCompetition() {
+		return sessionFactory.getCurrentSession().createQuery("from Competition").list();
 	}
+
 
 }
