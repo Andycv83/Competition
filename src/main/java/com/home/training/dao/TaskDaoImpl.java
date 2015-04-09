@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class TaskDaoImpl implements TaskDAO {
+	
 	@Autowired
     private SessionFactory sessionFactory;
     
@@ -21,13 +22,7 @@ public class TaskDaoImpl implements TaskDAO {
 
 	@Override
 	public void updateTask(Task task) {
-		  sessionFactory.getCurrentSession();
-		  Task t = (Task)sessionFactory.getCurrentSession().load(Task.class, task.getId());
-		  t.setId(task.getId());
-		  t.setDescription(task.getDescription());
-		  t.setCompetitionId(task.getCompetitionId());	
-		  t.setLevel(task.getLevel());
-		  sessionFactory.getCurrentSession().save(t);
+			sessionFactory.getCurrentSession().update(task);
 		 }
 		
 

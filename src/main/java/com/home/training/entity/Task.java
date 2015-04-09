@@ -2,10 +2,9 @@ package main.java.com.home.training.entity;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "TASK")
 public class Task {
-
-//	@Entity
-//	@Table(name = "TASKS")
 	    @Id
 	    @Column(name = "ID")
 	    @GeneratedValue
