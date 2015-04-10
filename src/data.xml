@@ -35,8 +35,8 @@
 	<!-- Непосредственно бин dataSource -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		p:driverClassName="${org.sqlite.JDBC}" 
-		p:url="${jdbc:sqlite:C:/Users/Andrey/git/Olimpiada/files/OlimpDB.db}"/>
+		p:driverClassName="org.sqlite.JDBC" 
+		p:url="jdbc:sqlite:C:/Users/amendtc/git/Olimpiada/files/OlimpDB.db"/>
 
 	<!-- Настройки фабрики сессий Хибернейта -->
 	<bean id="sessionFactory"
@@ -51,7 +51,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.dialect">${org.hibernate.dialect.SQLiteDialect}</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLiteDialect</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
 			</props>
 		</property>

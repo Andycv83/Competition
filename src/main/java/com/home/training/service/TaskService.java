@@ -20,5 +20,4 @@ public interface TaskService {
 	public void addCompetition(Competition competition);
 	
 	public List<Competition> getAllCompetition();
-
 }
